@@ -53,7 +53,7 @@ pipeline {
                 aws ec2 create-launch-template-version \\
                   --launch-template-id ${LAUNCH_TEMPLATE_ID} \\
                   --version-description "Updated with AMI ${env.NEW_AMI_ID}" \\
-                  --source-version 1 \\
+                  --source-version '$Latest' \\
                   --launch-template-data '{"ImageId":"${env.NEW_AMI_ID}"}' \\
                   --region ${AWS_REGION}
               """
