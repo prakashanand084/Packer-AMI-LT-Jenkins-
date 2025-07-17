@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         AWS_REGION = 'us-east-1'
-        LAUNCH_TEMPLATE_ID = 'lt-079127322d79b1979'
+        LAUNCH_TEMPLATE_ID = 'lt-091bc7a537e0cea78'
         ASG_NAME = "ASG"
         
     }
@@ -52,9 +52,9 @@ pipeline {
               sh """
                 aws ec2 create-launch-template-version \\
                   --launch-template-id ${LAUNCH_TEMPLATE_ID} \\
-                  --version-description "Updated with AMI ${env.NEW_AMI_ID}" \\
-                  --source-version '$Latest' \\
-                  --launch-template-data '{"ImageId":"${env.NEW_AMI_ID}"}' \\
+                  --version-description "Updated with AMI ${NEW_AMI_ID}" \\
+                  --source-version 1 \\
+                  --launch-template-data '{"ImageId":"${NEW_AMI_ID}"}' \\
                   --region ${AWS_REGION}
               """
             }
